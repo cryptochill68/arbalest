@@ -156,7 +156,7 @@ const runDaemon: () => Promise<?ChildProcess> = () => new Promise(async (resolve
   if (optionsFromZcashConf.rpcpassword) store.set('rpcpassword', optionsFromZcashConf.rpcpassword);
 
   log('Searching for zcashd.pid');
-  const daemonProcessId = getDaemonProcessId(optionsFromZcashConf.datadir);
+  const daemonProcessId = await getDaemonProcessId();
 
   if (daemonProcessId) {
     store.set(EMBEDDED_DAEMON, false);
