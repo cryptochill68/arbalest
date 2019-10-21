@@ -139,11 +139,11 @@ const runDaemon: () => Promise<?ChildProcess> = () => new Promise(async (resolve
   let useDefaultZcashConf = false;
 
   if (optionsFromZcashConf.datadir) {
-    const hasDatadirConf = fs.existsSync(path.join(optionsFromZcashConf.datadir, 'zcash.conf'));
+    const hasDatadirConf = fs.existsSync(path.join(optionsFromZcashConf.datadir, 'arrow.conf'));
 
     if (hasDatadirConf) {
       optionsFromZcashConf = await parseZcashConf(
-        path.join(String(optionsFromZcashConf.datadir), 'zcash.conf'),
+        path.join(String(optionsFromZcashConf.datadir), 'arrow.conf'),
       );
     } else {
       useDefaultZcashConf = true;

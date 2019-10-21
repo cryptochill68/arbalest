@@ -7,12 +7,12 @@ export const getZcashFolder = () => {
   const { app } = electron;
 
   if (os.platform() === 'darwin') {
-    return path.join(app.getPath('appData'), 'Zcash');
+    return path.join(app.getPath('appData'), 'Arrow');
   }
 
   if (os.platform() === 'linux') {
-    return path.join(app.getPath('home'), '.zcash');
+    return path.join(app.getPath('home'), '.arrow');
   }
 
-  return path.join(app.getPath('appData'), 'Zcash');
+  return path.join(app.getPath('appData'), 'Arrow');
 };
