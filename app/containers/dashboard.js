@@ -62,11 +62,10 @@ const mapDispatchToProps: (dispatch: Dispatch) => MapDispatchToProps = (dispatch
 
     const [walletErr, walletSummary] = await eres(rpc.z_gettotalbalance());
     const [zAddressesErr, zAddresses = []] = await eres(rpc.z_listaddresses());
-    const [tAddressesErr, tAddresses = []] = await eres(rpc.getaddressesbyaccount(''));
     const [transactionsErr, transactions] = await eres(rpc.listtransactions());
     const [unconfirmedBalanceErr, unconfirmedBalance] = await eres(rpc.getunconfirmedbalance());
 
-    if (walletErr || zAddressesErr || tAddressesErr || transactionsErr || unconfirmedBalanceErr) {
+    if (walletErr || zAddressesErr || transactionsErr || unconfirmedBalanceErr) {
       return dispatch(
         loadWalletSummaryError({
           error: 'Something went wrong!',
@@ -100,11 +99,6 @@ const mapDispatchToProps: (dispatch: Dispatch) => MapDispatchToProps = (dispatch
       if (newZAddress) zAddresses.push(newZAddress);
     }
 
-    if (!tAddresses.length) {
-      const [, newTAddress] = await eres(rpc.getnewaddress(''));
-
-      if (newTAddress) tAddresses.push(newTAddress);
-    }
 
     dispatch(
       loadWalletSummarySuccess({

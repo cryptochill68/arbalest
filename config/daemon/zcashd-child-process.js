@@ -165,10 +165,8 @@ const runDaemon: () => Promise<?ChildProcess> = () => new Promise(async (resolve
         `A daemon was found running in PID: ${daemonProcessId}. Starting Zepio in external daemon mode.`,
     );
 
-    // Command line args override zcash.conf
-    const [{ cmd, pid }] = await findProcess('pid', daemonProcessId);
 
-    store.set(DAEMON_PROCESS_PID, pid);
+    store.set(DAEMON_PROCESS_PID, daemonProcessId);
 
     // We need grab the rpcuser and rpcpassword from either process args or zcash.conf
     const {
