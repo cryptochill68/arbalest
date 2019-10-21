@@ -13,7 +13,7 @@ const getRPCConfig = () => {
 
   return {
     host: rpcconnect || '127.0.0.1',
-    port: rpcport || (isTestnet() ? 18232 : 8232),
+    port: rpcport || (isTestnet() ? 18232 : 7654),
     user: (store.get('rpcuser'): string),
     password: (store.get('rpcpassword'): string),
   };
