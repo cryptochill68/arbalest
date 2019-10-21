@@ -122,7 +122,6 @@ class Component extends PureComponent<Props, State> {
 
   componentDidMount() {
     const { loadAddresses } = this.props;
-
     loadAddresses();
   }
 

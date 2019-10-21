@@ -167,7 +167,7 @@ const runDaemon: () => Promise<?ChildProcess> = () => new Promise(async (resolve
 
 
     store.set(DAEMON_PROCESS_PID, daemonProcessId);
-
+/*
     // We need grab the rpcuser and rpcpassword from either process args or zcash.conf
     const {
       rpcuser, rpcpassword, rpcconnect, rpcport, testnet: isTestnetFromCmd,
@@ -184,7 +184,7 @@ const runDaemon: () => Promise<?ChildProcess> = () => new Promise(async (resolve
     if (rpcpassword) store.set('rpcpassword', rpcpassword);
     if (rpcport) store.set('rpcport', rpcport);
     if (rpcconnect) store.set('rpcconnect', rpcconnect);
-
+*/
     return resolve();
   }
 

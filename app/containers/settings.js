@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
 
     dispatch(
       loadAddressesSuccess({
-        addresses: [...zAddresses, ...transparentAddresses].map(add => ({
+        addresses: [...zAddresses].map(add => ({
           address: add,
           balance: 0,
         })),

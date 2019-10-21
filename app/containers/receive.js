@@ -52,14 +52,12 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
     const latestZAddress = zAddresses.find(addr => addr === electronStore.get(getLatestAddressKey('shielded')))
       || zAddresses[0];
 
-    const latestTAddress = transparentAddresses.find(
-      addr => addr === electronStore.get(getLatestAddressKey('transparent')),
-    ) || transparentAddresses[0];
+
+
 
     const allAddresses = await asyncMap(
       [
-        ...zAddresses.filter(cur => cur !== latestZAddress),
-        ...transparentAddresses.filter(cur => cur !== latestTAddress),
+        ...zAddresses.filter(cur => cur !== latestZAddress)
       ],
       async (address) => {
         const [err, response] = await eres(rpc.z_getbalance(address));
@@ -78,9 +76,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
               address: latestZAddress,
               balance: await rpc.z_getbalance(latestZAddress),
             }
-            : null,
-          latestTAddress
-            ? { address: latestTAddress, balance: await rpc.z_getbalance(latestTAddress) }
             : null,
           ...allAddresses,
         ].filter(Boolean),
